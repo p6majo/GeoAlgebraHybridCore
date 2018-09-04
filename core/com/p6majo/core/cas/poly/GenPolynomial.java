@@ -2386,7 +2386,6 @@ public class GenPolynomial<C extends RingElem<C>>
     //    out.defaultWriteObject();
     //}
 
-
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         blen = -1;

@@ -91,6 +91,7 @@ public class GenPolynomialTokenizer {
         if (rf == null) {
             return;
         }
+        pfac = rf;
         fac = rf.coFac;
         vars = rf.vars;
         if (vars != null) {
@@ -232,7 +233,7 @@ public class GenPolynomialTokenizer {
             // next input. determine next action
             tt = tok.nextToken();
             //System.out.println("while tt = " + tok);
-            logger.log(Logger.Level.debug,"while tt = " + tok);
+            if (debug) logger.log(Logger.Level.debug,"while tt = " + tok);
             if (tt == StreamTokenizer.TT_EOF)
                 break;
             switch (tt) {
@@ -456,12 +457,12 @@ public class GenPolynomialTokenizer {
             case '+':
             case ')':
             case ',':
-                logger.log(Logger.Level.debug,"b, = " + b);
+                if (debug) logger.log(Logger.Level.debug,"b, = " + b);
                 a = a.sum(b);
                 b = a1;
                 break;
             case '*':
-                logger.log(Logger.Level.debug,"b, = " + b);
+                if (debug) logger.log(Logger.Level.debug,"b, = " + b);
                 //a = a.sum(b); 
                 //b = a1;
                 break;
@@ -478,7 +479,7 @@ public class GenPolynomialTokenizer {
         if (debug)
             logger.log(Logger.Level.debug,"b = " + b);
         a = a.sum(b);
-        logger.log(Logger.Level.debug,"a = " + a);
+        if (debug) logger.log(Logger.Level.debug,"a = " + a);
         // b = a1;
         return a;
     }
@@ -597,7 +598,7 @@ public class GenPolynomialTokenizer {
         tt = tok.nextToken();
         //System.out.println("vList tok = " + tok);
         if (tt == '(' || tt == '{') {
-            logger.log(Logger.Level.debug,"variable list");
+            if (debug) logger.log(Logger.Level.debug,"variable list");
             tt = tok.nextToken();
             while (true) {
                 if (tt == StreamTokenizer.TT_EOF)
@@ -804,7 +805,7 @@ public class GenPolynomialTokenizer {
         int tt;
         tt = tok.nextToken();
         if (tt == '(') {
-            logger.log(Logger.Level.debug,"weight list");
+            if (debug) logger.log(Logger.Level.debug,"weight list");
             tt = tok.nextToken();
             while (true) {
                 if (tt == StreamTokenizer.TT_EOF)
@@ -851,7 +852,7 @@ public class GenPolynomialTokenizer {
         int tt;
         tt = tok.nextToken();
         if (tt == '(') {
-            logger.log(Logger.Level.debug,"weight array");
+            if (debug) logger.log(Logger.Level.debug,"weight array");
             tt = tok.nextToken();
             while (true) {
                 if (tt == StreamTokenizer.TT_EOF)
@@ -1035,7 +1036,7 @@ public class GenPolynomialTokenizer {
             return L;
         if (tt != '(')
             return L;
-        logger.log(Logger.Level.debug,"polynomial list");
+        if (debug) logger.log(Logger.Level.debug,"polynomial list");
         while (true) {
             tt = tok.nextToken();
             if (tok.ttype == ',')
@@ -1078,7 +1079,7 @@ public class GenPolynomialTokenizer {
             return L;
         if (tt != '(')
             return L;
-        logger.log(Logger.Level.debug,"module list");
+        if (debug) logger.log(Logger.Level.debug,"module list");
         List<GenPolynomial> v = null;
         while (true) {
             tt = tok.nextToken();

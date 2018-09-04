@@ -1,4 +1,4 @@
-package com.p6majo.core;
+package example;
 
 import com.p6majo.core.cas.arith.BigRational;
 import com.p6majo.core.cas.structure.RingElem;

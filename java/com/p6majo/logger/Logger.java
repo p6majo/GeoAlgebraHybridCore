@@ -3,7 +3,7 @@ package com.p6majo.logger;
 public class Logger {
 
     public static enum Level {info,warning,debug,error}
-    private boolean isDebugEnabled = true;
+    private boolean isDebugEnabled = false;
 
 
     private Class callingClass;
